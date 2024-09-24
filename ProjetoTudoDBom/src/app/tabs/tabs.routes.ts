@@ -27,6 +27,11 @@ export const routes: Routes = [
           import('../tab-perfil/tab4.page').then((m) => m.Tab4Page),
       },
       {
+        path: 'endereco',
+        loadComponent: () =>
+          import('../endereco/endereco.page').then((m) => m.EnderecoPage),
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full',
