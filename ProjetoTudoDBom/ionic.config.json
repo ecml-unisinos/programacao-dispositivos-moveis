@@ -1,0 +1,7 @@
+{
+  "name": "ProjetoTudoDBom",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
