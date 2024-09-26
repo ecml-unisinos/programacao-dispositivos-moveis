@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title> Tab 3 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +10,34 @@
       <ion-title size="large">Carrinho</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <img
+      alt="Silhouette of mountains"
+      width="200"
+      src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
+      style="float: left; position: relative"
+    />
+
+    <ion-card-header>
+      <ion-card-title>Título do Produto</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <div class="ion-display-flex ion-align-items-center ion-align-center">
+          <ion-button (click)="menos()">-</ion-button>
+          <input
+            type="number"
+            [(ngModel)]="quantidade"
+            class="stepper-input"
+            style="width: 60px; text-align: center; margin: 0 8px"
+          />
+          <ion-button (click)="mais()">+</ion-button>
+        </div>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 
   <ion-button href="/tabs/endereco">Endereço</ion-button>
 </ion-content>
