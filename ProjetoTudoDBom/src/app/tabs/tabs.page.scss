@@ -1,1 +1,17 @@
+//personalizando cores tab
+
+ion-icon {
+    --ionicon-stroke-width: 40px;
+    --ionicon-color: white;
+}
+
+ion-tab-bar {
+    background-color: #008140;
+    height: 60px;
+}
+
+ion-tab-button{
+    background-color: transparent;
+    color: white;
+}
 
