@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { expect } from 'chai'; 
 
 import { PagamentoPage } from './pagamento.page';
 
@@ -13,6 +14,6 @@ describe('PagamentoPage', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).to.be.true; 
   });
 });
