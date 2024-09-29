@@ -1,38 +1,21 @@
 import { Component } from '@angular/core';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonButton,
-  AlertController
-} from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 
 @Component({
   selector: 'app-pagamento',
-  templateUrl: 'pagamento.page.html',
-  styleUrls: ['pagamento.page.scss'],
-  standalone: true,
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonButton,
-    ExploreContainerComponent,
-  ],
+  templateUrl: './pagamento.page.html',
+  styleUrls: ['./pagamento.page.scss'],
 })
 export class PagamentoPage {
-  constructor(private AlertController: AlertController) {}
+  formaPagamento: string;
 
-  async simulatePayment() {
-    const alert = await this.AlertController.create({
-      header: 'Compra Realizada',
-      message: 'Sua compra foi realizada com sucesso. Um pedido foi criado.',
-      buttons: ['OK']
-    });
+  constructor() { }
 
-    await alert.present();
+  finalizarPedido() {
+  
+    // Implementar a lógica de envio do pedido via WhatsApp
+    
+    const pedido = `Olá, Pedido finalizado, forma de pagamento: ${this.formaPagamento}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=5551981783535&text=${encodeURIComponent(pedido)}`;
+    window.open(whatsappLink, '_system');
   }
 }

@@ -22,6 +22,11 @@ export const routes: Routes = [
           import('../tab-carrinho/tab3.page').then((m) => m.Tab3Page),
       },
       {
+        path: 'pagamento',
+        loadComponent: () =>
+          import('../pagamento/pagamento.page').then((m) => m.PagamentoPage),
+      },
+      {
         path: 'tab4',
         loadComponent: () =>
           import('../tab-perfil/tab4.page').then((m) => m.Tab4Page),

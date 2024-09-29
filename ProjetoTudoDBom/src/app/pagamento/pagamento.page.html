@@ -1,11 +1,21 @@
-<ion-header>
+<ion-header></ion-header>
   <ion-toolbar>
-    <ion-title class="titulo">
-      Pagamento
-    </ion-title>
+    <ion-title>Pagamento</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <app-explore-container name="Pagamento"></app-explore-container>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Forma de Pagamento</ion-label>
+      <ion-select [(ngModel)]="formaPagamento">
+        <ion-select-option value="cartao-debito">Cartão de Débito</ion-select-option>
+        <ion-select-option value="cartao-credito">Cartão de Crédito</ion-select-option>
+        <ion-select-option value="dinheiro">Dinheiro</ion-select-option>
+        <ion-select-option value="pix">PIX</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" (click)="finalizarPedido()">Finalizar</ion-button>
 </ion-content>
