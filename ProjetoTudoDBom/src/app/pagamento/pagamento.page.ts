@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgModel } from '@angular/forms';
+//import { NgModel } from '@angular/forms';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonList, IonItem, IonLabel, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
 
 @Component({
