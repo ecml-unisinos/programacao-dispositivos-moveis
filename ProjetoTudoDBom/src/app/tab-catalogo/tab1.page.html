@@ -8,44 +8,70 @@
 
 <ion-content>
   <ion-card class="card-produto">
-    <img alt="Produto 1" src="../../assets/images/produtos/produto 1.png" />
+    <img class="imagem-produto" alt="produto 1" src="../../assets/images/produtos/produto 1.jpeg" />
     <ion-card-header>
-      <ion-card-title>Produto 1</ion-card-title>
+      <ion-card-title class="nome-produto">Pão de Queijo tradicional 75g</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Descrição do produto 1
+      Sem glúten - Pacote de 1kg
     </ion-card-content>
 
-    <ion-button fill="clear">-</ion-button>
-    <ion-button fill="clear">+</ion-button>
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
   </ion-card>
 
   <ion-card class="card-produto">
-    <img alt="Produto 2" src="../../assets/images/produtos/produto 2.png" />
+    <img class="imagem-produto" alt="produto 2" src="../../assets/images/produtos/produto 2.jpeg" />
     <ion-card-header>
-      <ion-card-title>Produto 2</ion-card-title>
+      <ion-card-title class="nome-produto">Pão de Queijo com gotas de chocolate 75g</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Descrição do produto 2
+      Sem Glúten - Pacote de 1kg
     </ion-card-content>
 
-    <ion-button fill="clear">-</ion-button>
-    <ion-button fill="clear">+</ion-button>
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
   </ion-card>
 
   <ion-card class="card-produto">
-    <img alt="Produto 3" src="../../assets/images/produtos/produto 3.jpeg" />
+    <img class="imagem-produto" alt="produto 3" src="../../assets/images/produtos/produto 3.jpeg" />
     <ion-card-header>
-      <ion-card-title>Produto 3</ion-card-title>
+      <ion-card-title class="nome-produto">Chipa</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Descrição do produto 3
+      Sem Glúten - Pacote de 1kg
     </ion-card-content>
 
-    <ion-button fill="clear">-</ion-button>
-    <ion-button fill="clear">+</ion-button>
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
+  </ion-card>
+
+  <ion-card class="card-produto">
+    <img class="imagem-produto" alt="produto 4" src="../../assets/images/produtos/produto 4.jpeg" />
+    <ion-card-header>
+      <ion-card-title class="nome-produto">Palitos de Provolone</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Sem Glúten - Pacote de 1kg
+    </ion-card-content>
+
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
   </ion-card>
 </ion-content>
