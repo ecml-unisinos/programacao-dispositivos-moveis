@@ -7,7 +7,7 @@ const routes: Routes = [
     path: 'pagamento',
     component: PagamentoPage
   },
-  // Outras rotas...
+  
 ];
 
 @NgModule({

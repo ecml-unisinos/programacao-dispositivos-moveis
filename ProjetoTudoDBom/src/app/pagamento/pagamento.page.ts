@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./pagamento.page.scss'],
 })
 export class PagamentoPage {
-  formaPagamento: string;
+  formaPagamento: string = '';
 
   constructor() { }
 
