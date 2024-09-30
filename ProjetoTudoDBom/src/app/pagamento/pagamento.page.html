@@ -1,19 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Pagamento</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>Forma de Pagamento</ion-label>     
-        <ion-select-option value="cartao-debito">Cartão de Débito</ion-select-option>
-        <ion-select-option value="cartao-credito">Cartão de Crédito</ion-select-option>
-        <ion-select-option value="dinheiro">Dinheiro</ion-select-option>
-        <ion-select-option value="pix">PIX</ion-select-option>
-         </ion-item>
-  </ion-list>
-
-  <ion-button expand="block" (click)="finalizarPedido()">Finalizar</ion-button>
+<ion-content></ion-content>
+  <div class="forma-pagamento">
+    <div class="botao-pagamento botao-pagamento-pix">
+      PIX
+    </div>
+    <div class="botao-pagamento botao-pagamento-dinheiro">
+      Dinheiro
+    </div>
+    <div class="botao-pagamento botao-pagamento-credito">
+      Crédito
+    </div>
+    <div class="botao-pagamento botao-pagamento-debito">
+      Débito
+    </div>
+  </div>
 </ion-content>
+  
+  <ion-button expand="block" (click)="finalizarPedido()">Finalizar</ion-button>
+
