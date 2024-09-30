@@ -4,8 +4,7 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonButton
-} from '@ionic/angular/standalone';
+  IonButton, IonCol, IonGrid, IonRow, IonItem, IonLabel, IonInput, IonIcon, IonTabButton, IonTabBar, IonFooter } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 
 @Component({
@@ -13,7 +12,7 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
   templateUrl: 'endereco.page.html',
   styleUrls: ['endereco.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonFooter, IonTabBar, IonTabButton, IonIcon, IonInput, IonLabel, IonItem, IonRow, IonGrid, IonCol, 
     IonHeader,
     IonToolbar,
     IonTitle,
