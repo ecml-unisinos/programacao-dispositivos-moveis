@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-//import { NgModel } from '@angular/forms';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonList, IonItem, IonLabel, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pagamento',
   templateUrl: './pagamento.page.html',
   styleUrls: ['./pagamento.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonItem, IonList, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonSelect, IonSelectOption],
+  imports: [IonLabel, IonItem, IonList, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonSelect, IonSelectOption, FormsModule],
 })
 export class PagamentoPage {
   formaPagamento: string = '';
