@@ -1,19 +1,20 @@
-<ion-header></ion-header>
+<ion-header>
   <ion-toolbar>
     <ion-title>Pagamento</ion-title>
   </ion-toolbar>
-<ion-header>
+</ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label>Forma de Pagamento</ion-label>     
-      <ion-select-option value="cartao-debito">Cartão de Débito</ion-select-option>
-      <ion-select-option value="cartao-credito">Cartão de Crédito</ion-select-option>
-      <ion-select-option value="dinheiro">Dinheiro</ion-select-option>
-      <ion-select-option value="pix">PIX</ion-select-option>
-    </ion-item>         
+      <ion-label position="floating">Forma de Pagamento</ion-label>
+      <ion-select [(ngModel)]="formaPagamento">
+        <ion-select-option value="dinheiro">Dinheiro</ion-select-option>
+        <ion-select-option value="cartao">Cartão de Crédito</ion-select-option>
+        <ion-select-option value="cheque">Cheque</ion-select-option>
+        <ion-select-option value="transferencia">Transferência Bancária</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
-  
-  <ion-button expand="block" (click)="finalizarPedido()">Finalizar</ion-button>
+  <ion-button expand (click)="finalizarPedido()">Finalizar Pedido</ion-button>
 </ion-content>
