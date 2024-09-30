@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { expect } from 'chai'; 
+import { expect } from 'chai';
 
 import { PagamentoPage } from './pagamento.page';
 
