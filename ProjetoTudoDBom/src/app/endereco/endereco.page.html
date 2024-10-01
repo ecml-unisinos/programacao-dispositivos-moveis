@@ -1,17 +1,75 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 4
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>Finalização de Compra</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Endereco</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <h2>Informe o endereço de entrega</h2>
+      </ion-col>
+    </ion-row>
 
-  <app-explore-container name="Tab 4 page"></app-explore-container>
+    <ion-row>
+      <ion-col size="16">
+        <ion-item class="ion-rounded">
+          <ion-label position="floating">Endereço</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="ion-rounded">
+          <ion-label position="floating">Número</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="ion-rounded">
+          <ion-label position="floating">Complemento</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="ion-rounded">
+          <ion-label position="floating">CEP</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="ion-rounded">
+          <ion-label position="floating">Bairro</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="ion-rounded">
+          <ion-label position="floating">Cidade</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button expand="block" color="danger" href="/tabs/pagamento">Pagamento</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

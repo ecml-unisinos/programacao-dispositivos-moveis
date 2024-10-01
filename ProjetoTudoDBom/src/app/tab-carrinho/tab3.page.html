@@ -1,16 +1,18 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title> Tab 3 </ion-title>
+    <ion-title class="titulo">
+      Carrinho
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Carrinho</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  
   <ion-card>
     <img
       alt="Silhouette of mountains"
@@ -39,5 +41,8 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button href="/tabs/endereco">Endereço</ion-button>
+
+
+  <ion-button expand="block" href="/tabs/endereco">Endereço</ion-button>
+  <ion-button expand="block" color="danger" href="/tabs/pagamento">Pagamento</ion-button>
 </ion-content>

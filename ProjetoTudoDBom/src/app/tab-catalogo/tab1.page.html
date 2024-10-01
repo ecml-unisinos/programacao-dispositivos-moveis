@@ -1,17 +1,77 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title class="titulo">
+      Produtos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <img class="imagem-produto" alt="produto 1" src="../../assets/images/produtos/produto 1.jpeg" />
+    <ion-card-header>
+      <ion-card-title class="nome-produto">Pão de Queijo tradicional 75g</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Sem glúten - Pacote de 1kg
+    </ion-card-content>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <img class="imagem-produto" alt="produto 2" src="../../assets/images/produtos/produto 2.jpeg" />
+    <ion-card-header>
+      <ion-card-title class="nome-produto">Pão de Queijo com gotas de chocolate 75g</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Sem Glúten - Pacote de 1kg
+    </ion-card-content>
+
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <img class="imagem-produto" alt="produto 3" src="../../assets/images/produtos/produto 3.jpeg" />
+    <ion-card-header>
+      <ion-card-title class="nome-produto">Chipa</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Sem Glúten - Pacote de 1kg
+    </ion-card-content>
+
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <img class="imagem-produto" alt="produto 4" src="../../assets/images/produtos/produto 4.jpeg" />
+    <ion-card-header>
+      <ion-card-title class="nome-produto">Palitos de Provolone</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Sem Glúten - Pacote de 1kg
+    </ion-card-content>
+
+    <div class="counter-section">
+      <ion-button class="botao-subtrair" (click)="decrement()">-</ion-button>
+      <p id="quantidade">{{count}}</p>
+      <ion-button class="botao-adicionar" (click)="increment()">+</ion-button>
+    </div>
+  </ion-card>
 </ion-content>
