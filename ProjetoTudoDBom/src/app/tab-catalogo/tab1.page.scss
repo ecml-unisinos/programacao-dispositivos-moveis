@@ -1,7 +1,9 @@
-.card-produto {
+ion-card {
     border-radius: 25px;
     background-color: aliceblue;
     color: black;
+    width: 80%;
+    margin: 25px auto 25px auto;
 }
 
 .nome-produto {
@@ -12,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    padding: 15px;
+    padding: 10px;
 }
 
 #quantidade {
