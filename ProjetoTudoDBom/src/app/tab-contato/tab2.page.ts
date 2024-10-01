@@ -14,7 +14,7 @@ export class Tab2Page {
   constructor() {}
 
   WhatsApp(){
-    const menssagem = 'Olá, vim pelo APP e gostaria de umas informações';
+    const menssagem = 'Olá, vim pelo app e gostaria de algumas informações';
     const whatsappLink = `https://api.whatsapp.com/send?phone=5551981783535&text=${encodeURIComponent(menssagem)}`;
     window.open(whatsappLink, '_system');
   }
