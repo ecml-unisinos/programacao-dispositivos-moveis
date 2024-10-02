@@ -57,28 +57,26 @@ export class Tab3Page {
   }
   carrinhoService = inject(CarrinhoService);
 
-  quantidade: number = 0;
   produtos: { nome: string; quantidade: number; id: number }[] = [];
 
   mais(produtoId: number) {
-    this.quantidade++;
     const produto = this.carrinhoService.produtos.find(
       (produto) => produto.id == produtoId
     );
     if (produto) {
-      produto.quantidade = this.quantidade;
+      produto.quantidade++;
     }
   }
 
   menos(produtoId: number) {
-    if (this.quantidade > 0) {
-      this.quantidade--;
       const produto = this.carrinhoService.produtos.find(
         (produto) => produto.id == produtoId
       );
-      if (produto) {
-        produto.quantidade = this.quantidade;
+    if (produto) {
+      if (produto.quantidade > 0) {
+        produto.quantidade--;
+
+        }
       }
     }
   }
-}

@@ -61,11 +61,11 @@ export class Tab1Page {
   decrement(produtoId: number): void {
     const produto = this.produtos.find((produto) => produto.id == produtoId);
     if (produto) {
-      produto.quantidade--;
-      this.carrinhoService.atualizaProdutoCarrinho(
-        produto.quantidade,
-        produtoId
-      );
+      if (produto.quantidade > 0) {
+        produto.quantidade--;
+        this.carrinhoService.atualizaProdutoCarrinho(produto.quantidade, produtoId);
+      }
+      
     }
   }
 
