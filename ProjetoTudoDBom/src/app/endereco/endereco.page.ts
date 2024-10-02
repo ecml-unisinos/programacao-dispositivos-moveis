@@ -22,5 +22,10 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
   ],
 })
 export class EnderecoPage {
+
+  salvarEndereco() {
+    alert('Endereço salvo com sucesso');
+  }
+
   constructor() {}
 }
