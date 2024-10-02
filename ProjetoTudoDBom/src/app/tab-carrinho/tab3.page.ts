@@ -16,7 +16,9 @@ import {
   IonRow,
   IonCol,
   IonText,
-  IonGrid, IonAvatar } from '@ionic/angular/standalone';
+  IonGrid,
+  IonAvatar,
+} from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { FormsModule } from '@angular/forms';
 import { CarrinhoService } from '../services/carrinho.service';
@@ -50,22 +52,33 @@ import { CarrinhoService } from '../services/carrinho.service';
   ],
 })
 export class Tab3Page {
-  constructor() {}
+  constructor() {
+    this.produtos = this.carrinhoService.getProdutosCarrinho();
+  }
   carrinhoService = inject(CarrinhoService);
 
   quantidade: number = 0;
+  produtos: { nome: string; quantidade: number; id: number }[] = [];
 
-  mais() {
+  mais(produtoId: number) {
     this.quantidade++;
-    console.log(this.quantidade);
-    this.carrinhoService.quantidade = this.quantidade
+    const produto = this.carrinhoService.produtos.find(
+      (produto) => produto.id == produtoId
+    );
+    if (produto) {
+      produto.quantidade = this.quantidade;
+    }
   }
 
-  menos() {
+  menos(produtoId: number) {
     if (this.quantidade > 0) {
       this.quantidade--;
-      console.log(this.quantidade);
-      this.carrinhoService.quantidade = this.quantidade
+      const produto = this.carrinhoService.produtos.find(
+        (produto) => produto.id == produtoId
+      );
+      if (produto) {
+        produto.quantidade = this.quantidade;
+      }
     }
   }
 }

@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
+  @for (produto of produtos; track produto) { @if (produto.quantidade > 0) {
   <ion-card class="ion-no-padding" id="card-produto">
     <ion-grid class="ion-no-padding ion-no-margin">
       <ion-row class="ion-no-padding ion-no-margin">
@@ -16,31 +17,31 @@
           />
         </ion-col>
         <ion-col class="ion-no-padding ion-no-margin">
-            <h5 style="margin-top: 10px; margin-left: 10px;"><b>Título do Produto</b></h5>
-            <div
-              class="div-botoes" style="margin-left: 10px;"
-            >
-              <img
-                src="../../assets/images/icones/icone-menos.png"
-                (click)="menos()"
-              />
+          <h5 style="margin-top: 10px; margin-left: 10px">
+            <b>{{ produto.nome }}</b>
+          </h5>
+          <div class="div-botoes" style="margin-left: 10px">
+            <img
+              src="../../assets/images/icones/icone-menos.png"
+              (click)="menos(produto.id)"
+            />
 
-              <input
-                type="number"
-                [(ngModel)]="quantidade"
-                id="quantidade"
-                style="border:none; width: 20px; text-align: center;"
-              />
-              <img
-                src="../../assets/images/icones/icone-mais.png"
-                (click)="mais()"
-              />
-            </div>
+            <input
+              type="number"
+              [(ngModel)]="produto.quantidade"
+              id="quantidade"
+              style="border: none; width: 20px; text-align: center"
+            />
+            <img
+              src="../../assets/images/icones/icone-mais.png"
+              (click)="mais(produto.id)"
+            />
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-
+  } }
   <ion-button expand="block" href="/tabs/endereco">Finalizar Compra</ion-button>
   <!-- <ion-button expand="block" color="danger" href="/tabs/pagamento"
     >Pagamento</ion-button
