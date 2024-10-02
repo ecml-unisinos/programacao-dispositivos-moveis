@@ -1,48 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="titulo">
-      Carrinho
-    </ion-title>
+    <ion-title class="titulo"> Carrinho </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Carrinho</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-card>
-    <img
-      alt="Silhouette of mountains"
-      width="200"
-      src="https://ionicframework.com/docs/img/demos/thumbnail.svg"
-      style="float: left; position: relative"
-    />
-
-    <ion-card-header>
-      <ion-card-title>Título do Produto</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-item>
-        <div class="ion-display-flex ion-align-items-center ion-align-center">
-          <ion-button (click)="menos()">-</ion-button>
-          <input
-            type="number"
-            [(ngModel)]="quantidade"
-            class="stepper-input"
-            style="width: 60px; text-align: center; margin: 0 8px"
+  <ion-card class="ion-no-padding" id="card-produto">
+    <ion-grid class="ion-no-padding ion-no-margin">
+      <ion-row class="ion-no-padding ion-no-margin">
+        <ion-col class="ion-no-padding" size="auto">
+          <img
+            class="ion-no-padding"
+            src="../../assets/images/produtos/produto 2.jpeg"
+            style="height: 100%; width: 79px; float: left; top: 0"
           />
-          <ion-button (click)="mais()">+</ion-button>
-        </div>
-      </ion-item>
-    </ion-card-content>
+        </ion-col>
+        <ion-col class="ion-no-padding ion-no-margin">
+            <h5 style="margin-top: 10px; margin-left: 10px;"><b>Título do Produto</b></h5>
+            <div
+              class="div-botoes" style="margin-left: 10px;"
+            >
+              <img
+                src="../../assets/images/icones/icone-menos.png"
+                (click)="menos()"
+              />
+
+              <input
+                type="number"
+                [(ngModel)]="quantidade"
+                id="quantidade"
+                style="border:none; width: 20px; text-align: center;"
+              />
+              <img
+                src="../../assets/images/icones/icone-mais.png"
+                (click)="mais()"
+              />
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 
-
-
-  <ion-button expand="block" href="/tabs/endereco">Endereço</ion-button>
-  <ion-button expand="block" color="danger" href="/tabs/pagamento">Pagamento</ion-button>
+  <ion-button expand="block" href="/tabs/endereco">Finalizar Compra</ion-button>
+  <!-- <ion-button expand="block" color="danger" href="/tabs/pagamento"
+    >Pagamento</ion-button
+  > -->
 </ion-content>
