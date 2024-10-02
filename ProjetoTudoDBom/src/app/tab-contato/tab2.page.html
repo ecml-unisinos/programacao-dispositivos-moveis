@@ -6,6 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <app-explore-container name="Contato"></app-explore-container>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button expand="block" color="success" (click)="WhatsApp()">
+          <ion-icon slot="primary" name="logo-whatsapp"></ion-icon>
+           WhatsApp
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

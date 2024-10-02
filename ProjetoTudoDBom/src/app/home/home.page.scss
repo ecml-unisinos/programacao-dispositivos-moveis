@@ -4,7 +4,7 @@ ion-content::part(background) {
     background-image: url(../../assets/images/bg-home.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
 }
 
 p{
@@ -22,17 +22,19 @@ a:hover {
 
 ion-button.entrar-home{
     width: 70%;
+    font-size: large;
     --background: #008140;
-    --padding-top: 15px;
-    --padding-bottom: 15px;
+    --padding-top: 5px;
+    --padding-bottom: 5px;
     --opacity: 100%;
     --background-hover: #008140;
     --background-hover-opacity: 100%;
-    --ripple-color: #00a753;
+    --ripple-color: #00ca65;
 }
 
 ion-button.entrar-modal{
     width: 50%;
+    font-size: large;
     --background: transparent;
     --background-hover: transparent;
     --ripple-color: #cccccc;
@@ -41,7 +43,7 @@ ion-button.entrar-modal{
 }
 
 ion-footer{
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 ion-toolbar{
@@ -58,8 +60,8 @@ ion-modal {
   
 ion-modal::part(backdrop) {
     background: black;
-    opacity: 40%;
 }
+
   
 ion-modal ion-toolbar {
     --color: white;
