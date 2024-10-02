@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonAlert, IonFooter, IonButton, IonGrid, IonCol, IonRow, IonIcon, IonLabel, IonItem, IonList, IonInput, IonModal, IonButtons, IonAvatar, IonImg } from '@ionic/angular/standalone';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +16,23 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class HomePage implements OnInit {
 
+  @ViewChild(IonModal) modal!: IonModal;
+  email: string='jessica@gmail.com';
+  senha: string='teste123';
   loginForm: FormGroup = new FormGroup({});
   cadastroForm: FormGroup = new FormGroup({});
 
-  constructor() { }
+
+  constructor(private router: Router, private toastController: ToastController) { }
 
   ngOnInit(): void {
+    //setTimeout(() => {
+    //  this.router.navigate(['/tabs/tab1']);
+    //}, 2000);
+
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      senha: new FormControl('', Validators.required)
     });
 
     this.cadastroForm = new FormGroup({
@@ -39,9 +49,22 @@ export class HomePage implements OnInit {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
       console.log(loginData);
+      if (this.loginForm.value.email===this.email){
+        if (this.loginForm.value.senha===this.senha){
+          setTimeout(() => {
+            this.modal.dismiss(this.router.navigate(['/tabs/tab1']));
+          }, 500);
+        }else{
+          console.log('Senha inválida!');
+          this.exibirToast('Senha inválida');
+        }
+      }else{
+        console.log('E-mail não encontrado!');
+        this.exibirToast('E-mail não encontrado!');
+      }
       // Call your API or perform any other action with the form data
     } else {
-      console.log('Por favor, informe os seus dados!');
+      console.log('Por favor preencha os dados!');
     }
   }
 
@@ -49,9 +72,20 @@ export class HomePage implements OnInit {
     if (this.cadastroForm.valid) {
       const cadastroData = this.cadastroForm.value;
       console.log(cadastroData);
+      this.modal.dismiss(this.router.navigate(['/tabs/tab1']));
       // Call your API or perform any other action with the form data
     } else {
       console.log('Por favor, informe os seus dados!');
     }
   }
+
+  async exibirToast(mensagem: string) {
+    const toast = await this.toastController.create({
+      message: mensagem,
+      duration: 2000
+    });
+
+    await toast.present();
+  }
+
 }

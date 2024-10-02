@@ -12,17 +12,17 @@
 </ion-footer>
 
 <!--Modal para login-->
-<ion-modal #modalLogin trigger="open-modal-login" class="ion-text-center">
+<ion-modal trigger="open-modal-login" class="ion-text-center">
   <ng-template>
     <ion-toolbar>
-      <ion-title>Seja bem-vindo!</ion-title>
+      <h4>Seja bem-vindo!</h4>
     </ion-toolbar>
     <form [formGroup]="loginForm">
       <ion-row class="ion-justify-content-center">
         <ion-input type="email" formControlName="email" fill="solid" label="Email" placeholder="usuario@provedor.com" labelPlacement="floating" errorText="E-mail inválido"></ion-input>
       </ion-row>
       <ion-row class="ion-justify-content-center">
-        <ion-input type="password" formControlName="password" fill="solid" label="Senha" placeholder="**********" labelPlacement="floating" errorText="Senha incorreta"></ion-input>
+        <ion-input type="password" formControlName="senha" fill="solid" label="Senha" placeholder="**********" labelPlacement="floating" errorText="Senha incorreta"></ion-input>
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <div class="linha"></div>
@@ -37,7 +37,7 @@
 <ion-modal #modalCadastro trigger="open-modal-cadastro" class="ion-text-center">
   <ng-template>
     <ion-toolbar>
-      <ion-title>Informe os dados abaixo</ion-title>
+      <h4>Informe os dados abaixo</h4>
     </ion-toolbar>
     <form [formGroup]="cadastroForm">
       <ion-row class="ion-justify-content-center">
