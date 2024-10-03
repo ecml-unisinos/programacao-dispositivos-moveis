@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonItem, IonLabel, IonList, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonHeader, IonItem, IonLabel, IonList, IonSelect, IonSelectOption, IonTitle, IonToolbar, IonCol, IonRow, IonGrid } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-pagamento',
   templateUrl: './pagamento.page.html',
   styleUrls: ['./pagamento.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonGrid, IonRow, IonCol, 
     IonTitle,
     IonToolbar,
     IonHeader,
