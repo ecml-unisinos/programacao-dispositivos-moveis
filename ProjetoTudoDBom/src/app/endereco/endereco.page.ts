@@ -6,6 +6,7 @@ import {
   IonContent,
   IonButton, IonCol, IonGrid, IonRow, IonItem, IonLabel, IonInput, IonIcon, IonTabButton, IonTabBar, IonFooter } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-endereco',
@@ -27,5 +28,9 @@ export class EnderecoPage {
     alert('Endereço salvo com sucesso');
   }
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  chamarPagamento(){
+    this.router.navigate(['/tabs/pagamento'])
+  }
 }
