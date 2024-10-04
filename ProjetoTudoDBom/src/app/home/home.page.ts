@@ -42,6 +42,7 @@ export class HomePage implements OnInit {
     });
   }
 
+  //verifica se os dois campos de senha estão iguais
   validarSenha(){
     const dadosCadastro = this.cadastroForm.value;
     const senhasForm = {
@@ -58,11 +59,12 @@ export class HomePage implements OnInit {
     }
   }
 
+  //autenticacao do usuário
   login(): void {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
       const usuarios = this.usuarioService.getUsuariosCadastrados();
-      const user = usuarios.find(u => u.email === loginData.email && u.senha === loginData.senha);
+      const user = usuarios.find(u => u.email.toLowerCase() === loginData.email.toLowerCase() && u.senha === loginData.senha);
       if (user) {
         this.authService.login(user.id);
         setTimeout(() => {
@@ -76,6 +78,8 @@ export class HomePage implements OnInit {
     }
   }
 
+  
+  //cadastro do usuario com os dados do formulario
   cadastrar(): void {
     if (this.cadastroForm.valid) {
       const cadastroData = this.cadastroForm.value;
@@ -98,6 +102,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  //inicializa as configuracoes toast e aguarda ele ser chamado para exibir
   async exibirToast(mensagem: string) {
     const toast = await this.toastController.create({
       message: mensagem,
