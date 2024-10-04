@@ -16,4 +16,8 @@ export class UsuarioService {
     return this.usuarios;
   }
 
+  cadastrarUsuario(novoUsuario: { nome: string; cpf: number; email: string; telefone: number; senha: string; id: number }) {
+    this.usuarios.push(novoUsuario);
+  }
+
 }

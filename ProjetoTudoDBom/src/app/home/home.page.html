@@ -12,7 +12,7 @@
 </ion-footer>
 
 <!--Modal para login-->
-<ion-modal trigger="open-modal-login" class="ion-text-center">
+<ion-modal #loginModal trigger="open-modal-login" class="ion-text-center">
   <ng-template>
     <ion-toolbar>
       <h4>Seja bem-vindo!</h4>
@@ -26,7 +26,7 @@
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <div class="linha"></div>
-        <ion-button size="medium" fill="clear" class="entrar-modal" (click)="login()">Entrar</ion-button>
+        <ion-button fill="clear" class="entrar-modal" (click)="login()">Entrar</ion-button>
       </ion-row>
       <ion-footer class="ion-no-border"></ion-footer>
     </form>
@@ -34,7 +34,7 @@
 </ion-modal>
 
 <!--Modal para cadastro de usuário-->
-<ion-modal #modalCadastro trigger="open-modal-cadastro" class="ion-text-center">
+<ion-modal #cadastroModal trigger="open-modal-cadastro" class="ion-text-center">
   <ng-template>
     <ion-toolbar>
       <h4>Informe os dados abaixo</h4>
@@ -44,13 +44,13 @@
         <ion-input type="text" formControlName="nome" fill="solid" label="Nome/Razão Social" placeholder="Nome/Razão Social" labelPlacement="floating" errorText="Informe um nome"></ion-input>
       </ion-row>
       <ion-row class="ion-justify-content-center">
-        <ion-input type="text" formControlName="cpfCnpj" fill="solid" label="CPF/CNPJ" placeholder="Nome/Razão Social" labelPlacement="floating" errorText="Informe um nome"></ion-input>
+        <ion-input type="text" formControlName="cpfCnpj" fill="solid" label="CPF/CNPJ" placeholder="Somente números" labelPlacement="floating" errorText="Informe um nome"></ion-input>
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <ion-input type="email" formControlName="email" fill="solid" label="Email" placeholder="usuario@provedor.com" labelPlacement="floating" errorText="E-mail inválido"></ion-input>
       </ion-row>
       <ion-row class="ion-justify-content-center">
-        <ion-input type="text" formControlName="telefone" fill="solid" label="Telefone" placeholder="Nome/Razão Social" labelPlacement="floating" errorText="Informe um nome"></ion-input>
+        <ion-input type="text" formControlName="telefone" fill="solid" label="Telefone" placeholder="Somente números" labelPlacement="floating" errorText="Informe um nome"></ion-input>
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <ion-input type="password" formControlName="senha" fill="solid" label="Senha" placeholder="**********" labelPlacement="floating"></ion-input>
@@ -60,7 +60,7 @@
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <div class="linha"></div>
-        <ion-button fill="clear" class="entrar-modal" (click)="cadastrar()">Cadastrar</ion-button>
+        <ion-button fill="clear" class="entrar-modal" (click)="validarSenha()">Cadastrar</ion-button>
       </ion-row>
       <ion-footer class="ion-no-border"></ion-footer>
     </form>
