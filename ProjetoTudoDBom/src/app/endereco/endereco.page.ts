@@ -73,8 +73,11 @@ export class EnderecoPage {
       mensagem = mensagem + listaProdutos + `- Valor total: R$${valorTotal}.00 `
 
       const whatsappUrl = `https://wa.me/5551981783535?text=${encodeURIComponent(mensagem)}`;
-    
-      window.open(whatsappUrl, '_blank');
+
+      this.carrinhoService.whatsappUrl = whatsappUrl
+        
+      this.router.navigate(['tabs/pagamento']);
+
     } else {
       console.log('Formulário inválido');
     }

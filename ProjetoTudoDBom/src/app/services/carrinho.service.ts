@@ -8,6 +8,8 @@ export class CarrinhoService {
   
   valorTotal: number = 0
 
+  whatsappUrl: string = ''
+
   produtos: {
     nome: string;
     quantidade: number;
