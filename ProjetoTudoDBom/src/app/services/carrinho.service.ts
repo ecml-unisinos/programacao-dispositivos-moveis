@@ -54,6 +54,17 @@ export class CarrinhoService {
     imagem: string;
     preco: number;
   }[] {
+    return this.produtos;
+  }
+
+  //retorna só os produtos com quantidade maior que zero
+  getProdutosCompraFinal(): {
+    nome: string;
+    quantidade: number;
+    id: number;
+    imagem: string;
+    preco: number;
+  }[] {
     return this.produtos.filter(produto => produto.quantidade > 0);
   }
 
