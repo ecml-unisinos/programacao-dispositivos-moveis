@@ -1,19 +1,59 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonAlert, IonFooter, IonButton, IonGrid, IonCol, IonRow, IonIcon, IonLabel, IonItem, IonList, IonInput, IonModal, IonButtons, IonAvatar, IonImg } from '@ionic/angular/standalone';
+import { IonContent, 
+  IonHeader, 
+  IonTitle, 
+  IonToolbar, 
+  IonAlert, 
+  IonFooter, 
+  IonButton, 
+  IonGrid, 
+  IonCol, 
+  IonRow, 
+  IonIcon, 
+  IonLabel, 
+  IonItem, 
+  IonList, 
+  IonInput, 
+  IonModal, 
+  IonButtons, 
+  IonAvatar, 
+  IonImg } from '@ionic/angular/standalone';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { UsuarioService } from '../services/usuario.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonImg, IonAvatar, IonButtons, IonModal, IonInput, IonList, IonItem, IonLabel, IonIcon, IonRow, IonCol, IonGrid, IonButton, IonFooter, IonAlert, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, ],
+  imports: [IonImg, 
+    IonAvatar, 
+    IonButtons, 
+    IonModal, 
+    IonInput, 
+    IonList, 
+    IonItem, 
+    IonLabel, 
+    IonIcon, 
+    IonRow, 
+    IonCol, 
+    IonGrid, 
+    IonButton, 
+    IonFooter, 
+    IonAlert, 
+    IonContent, 
+    IonHeader, 
+    IonTitle, 
+    IonToolbar, 
+    CommonModule, 
+    FormsModule, 
+    ReactiveFormsModule, ],
 })
 
 export class HomePage implements OnInit {
