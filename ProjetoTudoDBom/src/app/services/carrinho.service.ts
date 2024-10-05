@@ -54,7 +54,7 @@ export class CarrinhoService {
     imagem: string;
     preco: number;
   }[] {
-    return this.produtos;
+    return this.produtos.filter(produto => produto.quantidade > 0);
   }
 
   atualizaProdutoCarrinho(quantidade: number, produtoId: number) {
