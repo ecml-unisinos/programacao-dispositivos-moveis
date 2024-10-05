@@ -58,7 +58,9 @@ export class Tab3Page {
   }
   carrinhoService = inject(CarrinhoService);
 
-  produtos: { nome: string; quantidade: number; id: number; imagem: string }[] = [];
+  valorTotal: number = 0
+
+  produtos: { nome: string; quantidade: number; id: number; imagem: string, preco: number }[] = [];
 
   mais(produtoId: number) {
     const produto = this.carrinhoService.produtos.find(
@@ -70,7 +72,7 @@ export class Tab3Page {
   }
 
   menos(produtoId: number) {
-      const produto = this.carrinhoService.produtos.find(
+    const produto = this.carrinhoService.produtos.find(
         (produto) => produto.id == produtoId
       );
     if (produto) {
@@ -81,7 +83,15 @@ export class Tab3Page {
       }
     }
 
-    chamarEndereco(){
-      this.router.navigate(['/tabs/endereco'])
+  chamarEndereco() {
+    this.calcularValorFinal()
+    this.router.navigate(['/tabs/endereco'])
+  }
+  
+  calcularValorFinal() {
+    for (const produto of this.produtos) {
+      this.valorTotal = this.valorTotal + produto.preco * produto.quantidade;
+      this.carrinhoService.setValorTotal(this.valorTotal)
     }
+  }
   }

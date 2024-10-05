@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -8,6 +8,7 @@ import {
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; 
+import { CarrinhoService } from '../services/carrinho.service';
 
 @Component({
   selector: 'app-endereco',
@@ -50,6 +51,8 @@ export class EnderecoPage {
     });
   }
 
+  carrinhoService = inject(CarrinhoService);
+
   chamarPagamento() {
     if (this.form.valid) {
       const endereco = this.form.value.endereco;
@@ -58,14 +61,16 @@ export class EnderecoPage {
       const cep = this.form.value.cep;
       const bairro = this.form.value.bairro;
       const cidade = this.form.value.cidade;
-
-      
-      const mensagem = `Finalização de Compra:
+      const listaProdutos = this.listaProdutos()
+      const valorTotal = this.carrinhoService.getValorTotal()
+      let mensagem = `Finalização de Compra:
       - Endereço: ${endereco}, Nº: ${numero}
       - Complemento: ${complemento}
       - CEP: ${cep}
       - Bairro: ${bairro}
       - Cidade: ${cidade}`;
+
+      mensagem = mensagem + listaProdutos + `- Valor total: R$${valorTotal}.00 `
 
       const whatsappUrl = `https://wa.me/5551981783535?text=${encodeURIComponent(mensagem)}`;
     
@@ -73,5 +78,14 @@ export class EnderecoPage {
     } else {
       console.log('Formulário inválido');
     }
+  }
+
+  listaProdutos() {
+    const produtos = this.carrinhoService.getProdutosCarrinho();
+    let mensagem = ' - Produtos:';
+    for (const produto of produtos) {
+      mensagem = mensagem + ` - ${produto.quantidade} ${produto.nome} `;
+    }
+    return mensagem
   }
 }

@@ -4,41 +4,54 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CarrinhoService {
-  constructor() {}
+  constructor() { }
+  
+  valorTotal: number = 0
 
-  produtos: { nome: string; quantidade: number; id: number; imagem: string }[] =
-    [
-      {
-        nome: 'Pão de Queijo Tradicional 75g',
-        quantidade: 0,
-        id: 1,
-        imagem: '../../assets/images/produtos/produto 1.jpeg',
-      },
-      {
-        nome: 'Pão de Queijo com gotas de chocolate 75g',
-        quantidade: 0,
-        id: 2,
-        imagem: '../../assets/images/produtos/produto 2.jpeg',
-      },
-      {
-        nome: 'Chipa',
-        quantidade: 0,
-        id: 3,
-        imagem: '../../assets/images/produtos/produto 3.jpeg',
-      },
-      {
-        nome: 'Palitos de provolone',
-        quantidade: 0,
-        id: 4,
-        imagem: '../../assets/images/produtos/produto 4.jpeg',
-      },
-    ];
+  produtos: {
+    nome: string;
+    quantidade: number;
+    id: number;
+    imagem: string;
+    preco: number;
+  }[] = [
+    {
+      nome: 'Pão de Queijo Tradicional 75g',
+      quantidade: 0,
+      id: 1,
+      imagem: '../../assets/images/produtos/produto 1.jpeg',
+      preco: 5,
+    },
+    {
+      nome: 'Pão de Queijo com gotas de chocolate 75g',
+      quantidade: 0,
+      id: 2,
+      imagem: '../../assets/images/produtos/produto 2.jpeg',
+      preco: 6,
+    },
+    {
+      nome: 'Chipa',
+      quantidade: 0,
+      id: 3,
+      imagem: '../../assets/images/produtos/produto 3.jpeg',
+      preco: 4,
+    },
+    {
+      nome: 'Palitos de provolone',
+      quantidade: 0,
+      id: 4,
+      imagem: '../../assets/images/produtos/produto 4.jpeg',
+      preco: 3,
+    },
+  ];
 
-  getProdutosCarrinho(): { nome: string; quantidade: number; id: number; imagem: string }[] {
-    // const produtos = [
-    //   { nome: 'Pão de Queijo Tradicional 75g', quantidade: 2},
-    //   { nome: 'Pão de Queijo 75g', quantidade: 3 },
-    // ];
+  getProdutosCarrinho(): {
+    nome: string;
+    quantidade: number;
+    id: number;
+    imagem: string;
+    preco: number;
+  }[] {
     return this.produtos;
   }
 
@@ -47,5 +60,13 @@ export class CarrinhoService {
     if (produto) {
       produto.quantidade = quantidade;
     }
+  }
+
+  getValorTotal(): number {
+    return this.valorTotal
+  }
+
+  setValorTotal(valor: number) {
+    this.valorTotal = valor
   }
 }
