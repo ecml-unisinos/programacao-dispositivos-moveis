@@ -23,6 +23,7 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
 import { FormsModule } from '@angular/forms';
 import { CarrinhoService } from '../services/carrinho.service';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -53,12 +54,14 @@ import { Router } from '@angular/router';
   ],
 })
 export class Tab3Page {
-  constructor(private router: Router) {
+  constructor(private router: Router, private toastController: ToastController) {
     this.produtos = this.carrinhoService.getProdutosCarrinho();
   }
   carrinhoService = inject(CarrinhoService);
 
-  valorTotal: number = 0
+  valorTotal: number = 0;
+
+  quantidadeTotal: number = 0;
 
   produtos: { nome: string; quantidade: number; id: number; imagem: string, preco: number }[] = [];
 
@@ -94,4 +97,25 @@ export class Tab3Page {
       this.carrinhoService.setValorTotal(this.valorTotal)
     }
   }
+
+  verificaQuantidadeProdutos(){
+    for (const produto of this.produtos) {
+      this.quantidadeTotal = this.quantidadeTotal + produto.quantidade;
+    }
+    if (this.quantidadeTotal > 0){
+      this.chamarEndereco();
+    }else{
+      this.exibirToast('Não há produtos no carrinho!');
+    }
+  }
+
+  async exibirToast(mensagem: string) {
+    const toast = await this.toastController.create({
+      message: mensagem,
+      duration: 2000
+    });
+
+    await toast.present();
+  }
+
   }
