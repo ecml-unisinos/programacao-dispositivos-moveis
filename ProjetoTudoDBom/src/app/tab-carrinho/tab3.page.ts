@@ -22,6 +22,7 @@ import {
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { FormsModule } from '@angular/forms';
 import { CarrinhoService } from '../services/carrinho.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab3',
@@ -52,7 +53,7 @@ import { CarrinhoService } from '../services/carrinho.service';
   ],
 })
 export class Tab3Page {
-  constructor() {
+  constructor(private router: Router) {
     this.produtos = this.carrinhoService.getProdutosCarrinho();
   }
   carrinhoService = inject(CarrinhoService);
@@ -78,5 +79,9 @@ export class Tab3Page {
 
         }
       }
+    }
+
+    chamarEndereco(){
+      this.router.navigate(['/tabs/endereco'])
     }
   }

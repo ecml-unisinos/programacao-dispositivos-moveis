@@ -5,6 +5,8 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonAlert, IonFooter, IonBu
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -16,19 +18,14 @@ import { ToastController } from '@ionic/angular';
 
 export class HomePage implements OnInit {
 
-  @ViewChild(IonModal) modal!: IonModal;
-  email: string='jessica@gmail.com';
-  senha: string='teste123';
+  @ViewChild('loginModal') loginModal!: IonModal;
+  @ViewChild('cadastroModal') cadastroModal!: IonModal;
   loginForm: FormGroup = new FormGroup({});
   cadastroForm: FormGroup = new FormGroup({});
 
-
-  constructor(private router: Router, private toastController: ToastController) { }
+  constructor(private router: Router, private toastController: ToastController, private authService: AuthService, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    //setTimeout(() => {
-    //  this.router.navigate(['/tabs/tab1']);
-    //}, 2000);
 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -45,40 +42,67 @@ export class HomePage implements OnInit {
     });
   }
 
+  //verifica se os dois campos de senha estão iguais
+  validarSenha(){
+    const dadosCadastro = this.cadastroForm.value;
+    const senhasForm = {
+      senha: dadosCadastro.senha,
+      confirmarSenha: dadosCadastro.confirmarSenha
+    };
+
+    if(senhasForm.senha === senhasForm.confirmarSenha){
+      this.cadastrar();
+    }else{
+      this.exibirToast('As senhas não conferem');
+      this.cadastroForm.get('senha')?.setValue('');
+      this.cadastroForm.get('confirmarSenha')?.setValue('');
+    }
+  }
+
+  //autenticacao do usuário
   login(): void {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-      console.log(loginData);
-      if (this.loginForm.value.email===this.email){
-        if (this.loginForm.value.senha===this.senha){
-          setTimeout(() => {
-            this.modal.dismiss(this.router.navigate(['/tabs/tab1']));
-          }, 500);
-        }else{
-          console.log('Senha inválida!');
-          this.exibirToast('Senha inválida');
-        }
-      }else{
-        console.log('E-mail não encontrado!');
-        this.exibirToast('E-mail não encontrado!');
+      const usuarios = this.usuarioService.getUsuariosCadastrados();
+      const user = usuarios.find(u => u.email.toLowerCase() === loginData.email.toLowerCase() && u.senha === loginData.senha);
+      if (user) {
+        this.authService.login(user.id);
+        setTimeout(() => {
+          this.loginModal.dismiss(this.router.navigate(['/tabs/tab1']));
+        }, 200);
+      } else {
+        this.exibirToast('E-mail ou senha inválidos!');
       }
-      // Call your API or perform any other action with the form data
     } else {
-      console.log('Por favor preencha os dados!');
+      this.exibirToast('Por favor preencha os dados!');
     }
   }
 
+  
+  //cadastro do usuario com os dados do formulario
   cadastrar(): void {
     if (this.cadastroForm.valid) {
       const cadastroData = this.cadastroForm.value;
-      console.log(cadastroData);
-      this.modal.dismiss(this.router.navigate(['/tabs/tab1']));
-      // Call your API or perform any other action with the form data
+      const novoUsuario = {
+        nome: cadastroData.nome,
+        cpf: cadastroData.cpfCnpj,
+        email: cadastroData.email,
+        telefone: cadastroData.telefone,
+        senha: cadastroData.senha,
+        id: this.usuarioService.getUsuariosCadastrados().length + 1
+      };
+      
+      this.usuarioService.cadastrarUsuario(novoUsuario);
+      this.authService.login(novoUsuario.id);
+      setTimeout(() => {
+        this.cadastroModal.dismiss(this.router.navigate(['/tabs/tab1']));
+      }, 200);
     } else {
-      console.log('Por favor, informe os seus dados!');
+      this.exibirToast('Por favor, informe os seus dados!');
     }
   }
 
+  //inicializa as configuracoes toast e aguarda ele ser chamado para exibir
   async exibirToast(mensagem: string) {
     const toast = await this.toastController.create({
       message: mensagem,
