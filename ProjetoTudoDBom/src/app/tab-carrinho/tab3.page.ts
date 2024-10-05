@@ -57,7 +57,7 @@ export class Tab3Page {
   }
   carrinhoService = inject(CarrinhoService);
 
-  produtos: { nome: string; quantidade: number; id: number }[] = [];
+  produtos: { nome: string; quantidade: number; id: number; imagem: string }[] = [];
 
   mais(produtoId: number) {
     const produto = this.carrinhoService.produtos.find(
