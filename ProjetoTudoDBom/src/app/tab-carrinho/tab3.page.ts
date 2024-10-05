@@ -92,20 +92,33 @@ export class Tab3Page {
   }
   
   calcularValorFinal() {
+    let total = 0
     for (const produto of this.produtos) {
-      this.valorTotal = this.valorTotal + produto.preco * produto.quantidade;
-      this.carrinhoService.setValorTotal(this.valorTotal)
+      total = total + produto.preco * produto.quantidade;
     }
+    this.valorTotal = total
+    this.carrinhoService.setValorTotal(this.valorTotal);
+    return this.valorTotal
   }
 
   verificaQuantidadeProdutos(){
-    for (const produto of this.produtos) {
-      this.quantidadeTotal = this.quantidadeTotal + produto.quantidade;
-    }
-    if (this.quantidadeTotal > 0){
+    if (this.temProdutosCarrinho()){
       this.chamarEndereco();
     }else{
       this.exibirToast('Não há produtos no carrinho!');
+    }
+  }
+
+  temProdutosCarrinho(): boolean {
+    let total = 0
+    for (const produto of this.produtos) {
+      total = total + produto.quantidade;
+    }
+    this.quantidadeTotal = total
+    if (this.quantidadeTotal > 0) {
+      return true
+    } else {
+      return false
     }
   }
 

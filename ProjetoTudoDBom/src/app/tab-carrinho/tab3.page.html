@@ -13,14 +13,22 @@
           <img
             class="ion-no-padding"
             src="{{ produto.imagem }}"
-            style="height: 100%; max-width: 100px; float: left; top: 0; background-size: cover;"
+            style="
+              height: 100%;
+              max-width: 100px;
+              float: left;
+              top: 0;
+              background-size: cover;
+            "
           />
         </ion-col>
         <ion-col class="ion-no-padding ion-no-margin">
           <h5 style="margin-top: 10px; margin-left: 10px">
             <b>{{ produto.nome }}</b>
           </h5>
-          <p style="margin-top: 10px; margin-left: 10px">R${{ produto.preco }}.00</p>
+          <p style="margin-top: 10px; margin-left: 10px">
+            R${{ produto.preco }}.00
+          </p>
           <div class="div-botoes" style="margin-left: 10px; margin-bottom: 5px">
             <img
               src="../../assets/images/icones/icone-menos.png"
@@ -42,10 +50,18 @@
       </ion-row>
     </ion-grid>
   </ion-card>
-  } }
+  } } @if (this.temProdutosCarrinho()) {
+  <ion-card>
+    <ion-card-content>
+      Total: R${{ this.calcularValorFinal() }}.00
+    </ion-card-content>
+  </ion-card>
   <ion-button expand="block" (click)="verificaQuantidadeProdutos()"
     >Finalizar Compra</ion-button
   >
+  } @else {
+  <p style="text-align: center; font-weight: bold">Carrinho Vazio</p>
+  }
   <!-- <ion-button expand="block" color="danger" href="/tabs/pagamento"
     >Pagamento</ion-button
   > -->

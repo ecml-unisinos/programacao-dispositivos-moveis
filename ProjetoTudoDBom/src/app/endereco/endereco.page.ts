@@ -4,18 +4,38 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonButton, IonCol, IonGrid, IonRow, IonItem, IonLabel, IonInput, IonIcon, IonTabButton, IonTabBar, IonFooter, IonText } from '@ionic/angular/standalone';
+  IonButton,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonIcon,
+  IonTabButton,
+  IonTabBar,
+  IonFooter,
+  IonText,
+} from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; 
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CarrinhoService } from '../services/carrinho.service';
+import { UsuarioService } from '../services/usuario.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-endereco',
   templateUrl: 'endereco.page.html',
   styleUrls: ['endereco.page.scss'],
   standalone: true,
-  imports: [IonText, 
+  imports: [
+    IonText,
     IonFooter,
     IonTabBar,
     IonTabButton,
@@ -25,22 +45,20 @@ import { CarrinhoService } from '../services/carrinho.service';
     IonItem,
     IonRow,
     IonGrid,
-    IonCol, 
+    IonCol,
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
     IonButton,
     ExploreContainerComponent,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
   ],
 })
 export class EnderecoPage {
+  form: FormGroup;
 
-  form: FormGroup; 
-
-  constructor(private router: Router, private fb: FormBuilder) { 
-    
+  constructor(private router: Router, private fb: FormBuilder) {
     this.form = this.fb.group({
       endereco: ['', Validators.required],
       numero: ['', Validators.required],
@@ -52,32 +70,41 @@ export class EnderecoPage {
   }
 
   carrinhoService = inject(CarrinhoService);
+  usuarioService = inject(UsuarioService)
+  authService = inject(AuthService)
 
   chamarPagamento() {
     if (this.form.valid) {
       const endereco = this.form.value.endereco;
       const numero = this.form.value.numero;
-      const complemento = this.form.value.complemento ? this.form.value.complemento : 'Não informado';
+      const complemento = this.form.value.complemento
+        ? this.form.value.complemento
+        : 'Não informado';
       const cep = this.form.value.cep;
       const bairro = this.form.value.bairro;
       const cidade = this.form.value.cidade;
-      const listaProdutos = this.listaProdutos()
-      const valorTotal = this.carrinhoService.getValorTotal()
+      const listaProdutos = this.listaProdutos();
+      const valorTotal = this.carrinhoService.getValorTotal();
+      const cliente = this.usuarioService.getUsuario(this.authService.getUserId())
       let mensagem = `Finalização de Compra:
+      - Cliente: ${cliente.nome}, telefone ${cliente.telefone}
       - Endereço: ${endereco}, Nº: ${numero}
       - Complemento: ${complemento}
       - CEP: ${cep}
       - Bairro: ${bairro}
       - Cidade: ${cidade}`;
 
-      mensagem = mensagem + listaProdutos + `- Valor total: R$${valorTotal}.00 `
+      mensagem =
+        mensagem + listaProdutos + `
+        - Valor total: R$${valorTotal}.00`;
 
-      const whatsappUrl = `https://wa.me/5551981783535?text=${encodeURIComponent(mensagem)}`;
+      const whatsappUrl = `https://wa.me/5551981783535?text=${encodeURIComponent(
+        mensagem
+      )}`;
 
-      this.carrinhoService.whatsappUrl = whatsappUrl
-        
+      this.carrinhoService.whatsappUrl = whatsappUrl;
+
       this.router.navigate(['tabs/pagamento']);
-
     } else {
       console.log('Formulário inválido');
     }
@@ -85,10 +112,12 @@ export class EnderecoPage {
 
   listaProdutos() {
     const produtos = this.carrinhoService.getProdutosCarrinho();
-    let mensagem = ' - Produtos:';
+    let mensagem = `- Produtos:`;
     for (const produto of produtos) {
-      mensagem = mensagem + ` - ${produto.quantidade} ${produto.nome} `;
+      mensagem = mensagem + ` 
+           - ${produto.quantidade} ${produto.nome} 
+           `;
     }
-    return mensagem
+    return mensagem;
   }
 }
