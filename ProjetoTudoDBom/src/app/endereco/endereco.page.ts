@@ -87,7 +87,7 @@ export class EnderecoPage {
       const valorTotal = this.carrinhoService.getValorTotal();
       const cliente = this.usuarioService.getUsuario(this.authService.getUserId())
       let mensagem = `Finalização de Compra:
-      - Cliente: ${cliente.nome}, telefone ${cliente.telefone}
+      - Cliente: ${cliente.nome}, Telefone ${cliente.telefone}
       - Endereço: ${endereco}, Nº: ${numero}
       - Complemento: ${complemento}
       - CEP: ${cep}
@@ -111,7 +111,7 @@ export class EnderecoPage {
   }
 
   listaProdutos() {
-    const produtos = this.carrinhoService.getProdutosCarrinho();
+    const produtos = this.carrinhoService.getProdutosCompraFinal();
     let mensagem = `- Produtos:`;
     for (const produto of produtos) {
       mensagem = mensagem + ` 
